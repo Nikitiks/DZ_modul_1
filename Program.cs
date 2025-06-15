@@ -72,6 +72,38 @@ namespace DZ_modul_1
             Console.WriteLine($"The result from swap numbers {res}");
         }
 
+        static string GetSeason(DateTime date)
+        {
+  
+            int mount = date.Month;
+
+            if(mount >= 3 && mount < 6)
+            {
+                return "Spring";
+            }
+            else if (mount >= 6 && mount < 9)
+            {
+                return "Summer";
+            }
+            else if (mount >= 9 && mount < 12)
+            {
+                return "Fall";
+            }
+            else
+            {
+                return "Winter";
+            }
+
+        }
+        static void ShowDate(string date)
+        {
+            DateTime datetime = DateTime.Parse(date);
+            DayOfWeek dayOfWeek = datetime.DayOfWeek;
+            string season = GetSeason(datetime);
+
+            Console.WriteLine("{0} {1}",dayOfWeek,season);
+        }
+
         static void ConvTemp(int t)
         {
             
@@ -114,6 +146,8 @@ namespace DZ_modul_1
                     Console.WriteLine($"{n} — чётное");
             }
         }
+
+
         static void Main(string[] args)
         {
 
@@ -193,9 +227,15 @@ namespace DZ_modul_1
             //Например, если введено 22.12.2021, приложение должно
             //отобразить Winter Wednesday.
 
+            Console.WriteLine("Enter date: ");
+            string dt = Console.ReadLine();
+            ShowDate(dt);
+
+
             //Задание 6
             //Пользователь вводит с клавиатуры показания температуры. В зависимости от выбора пользователя программа переводит температуру из Фаренгейта в Цельсий
             //или наоборот.
+
 
             Console.Write("Enter temperature: ");
             int t = int.Parse(Console.ReadLine());
@@ -209,10 +249,12 @@ namespace DZ_modul_1
             //ввел 20 и 11, требуется нормализация, после которой
             //начало диапазона станет равно 11, а конец 20.
 
+
             Console.WriteLine("Введите диапазон четных чисел ");
             int min = int.Parse(Console.ReadLine());
             int max = int.Parse(Console.ReadLine());
             ShowEvenNumbers(min,max);
+
         }
     }
 }
